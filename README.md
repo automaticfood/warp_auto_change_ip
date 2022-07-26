@@ -18,7 +18,7 @@ You'd better use the range of IPv4 of 193, it can better unlock the streaming me
 
 ## How to use
 ```bash
-wget https://github.com/luoxue-bot/warp_auto_change_ip/raw/main/warp_change_ip.sh && chmod +x warp_change_ip.sh && ./warp_change_ip.sh
+wget https://github.com/automaticfood/warp_auto_change_ip/raw/main/warp_change_ip.sh && chmod +x warp_change_ip.sh && ./warp_change_ip.sh
 ```
 
 PS：Will use the result of directly executing curl to Netflix as a benchmark.

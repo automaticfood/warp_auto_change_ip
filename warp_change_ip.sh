@@ -8,11 +8,17 @@ read -r -p "Is warp installed? [y/n] " input
 if [[ "$input" == "n" ]];then
     bash <(curl -fsSL https://github.com/luoxue-bot/warp.sh/raw/main/warp.sh) 4
 elif [[ "$input" == "y" ]];then
-    read -r -p "Input the region you want(e.g. HK,SG):" area
+    read -r -p "Input the region you want(e.g. HK,SG,US):" area
 fi
+# read -r -p "Select ipv4 or ipv6 [4/6] " iptype
+# if [[ "$iptype" == "4" ]];then
+#     iptype=ipv4
+# elif [[ "$iptype" == "6" ]];then
+#     iptype=ipv6
+# fi
 while [[ "$input" == "y" ]]
 do
-    result=$(curl --user-agent "${UA_Browser}" -fsL --write-out %{http_code} --output /dev/null --max-time 10 "https://www.netflix.com/title/81215567" 2>&1)
+    result=$(curl --user-agent "${UA_Browser}" -fsL --write-out %{http_code} --output /dev/null --ipv6 --max-time 10 "https://www.netflix.com/title/81215567" 2>&1)
     if [[ "$result" == "404" ]];then
         echo -e "Originals Only, Changing IP..."
         systemctl restart wg-quick@wgcf
@@ -34,7 +40,7 @@ do
             sleep 3
         else
             echo -e "Region: ${region} Done, monitoring..."
-            sleep 6
+            sleep 300
         fi
 
     elif  [[ "$result" == "000" ]];then
